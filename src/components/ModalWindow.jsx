@@ -22,7 +22,7 @@ const ModalWindow = () => {
         Add Task
       </Button>
       <Modal
-        title="Basic Modal"
+        title="Add Task"
         closable={{ 'aria-label': 'Custom Close Button' }}
         open={isModalOpen}
         onOk={handleOk}
