@@ -1,7 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
+const startArr = [
+    {
+        id: 1,
+        name: "Buba",
+        isDone: false
+    },
+    {
+        id: 2,
+        name: "Buba",
+        isDone: false
+    },
+    {
+        id: 3,
+        name: "Buba",
+        isDone: false
+    },
+]
+
+
 const initialState = {
-    data: JSON.parse(localStorage.getItem("data"))
+    data: JSON.parse(localStorage.getItem("data")) || startArr
 }
 
 localStorage.setItem("data", JSON.stringify(initialState.data));
