@@ -19,7 +19,7 @@ const ModalWindow = () => {
   return (
     <>
       <Button color="default" variant="solid" onClick={showModal}>
-        Open Modal
+        Add Task
       </Button>
       <Modal
         title="Basic Modal"
