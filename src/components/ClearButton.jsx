@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { clearData } from '../store/listSlice';
+import {clearDataThunk } from '../store/listSlice';
 
 
 function ClearButton() {
@@ -9,7 +9,7 @@ function ClearButton() {
 
 
     const handleClick = () => {
-        dispatch(clearData())
+        dispatch(clearDataThunk())
     }
 
     return (

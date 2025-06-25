@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeItem, changeIsDone, saveEdit } from '../store/listSlice';
+import { removeItemThunk, changeIsDoneThunk, saveEditThunk } from '../store/listSlice';
 import { Button, Modal } from 'antd';
 import AddForm from './AddForm';
 import ModalWindow from './ModalWindow';
@@ -12,11 +12,11 @@ function TODOItem({item}) {
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
-        dispatch(changeIsDone(e.target.id));
+        dispatch(changeIsDoneThunk(e.target.id));  
     }
 
     const handleRemove = (e) => {
-        dispatch(removeItem(e.target.id));
+        dispatch(removeItemThunk(e.target.id));
     }
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -36,7 +36,7 @@ function TODOItem({item}) {
             id: item.id,
             name: newValue
         }
-        dispatch(saveEdit(prop))
+        dispatch(saveEditThunk(prop)); 
         setIsModalOpen(false);
     }
 

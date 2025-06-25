@@ -10,6 +10,7 @@ function App() {
 
   return (
     <>
+      <h1>TODO WITH REDUX!</h1>
       <ModalWindow />
       <TODOList />
       <ClearButton />

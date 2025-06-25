@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../store/listSlice';
+import { addItemThunk } from '../store/listSlice';
 import * as Yup from 'yup';
 
 function AddForm({ value = "", addForm, setNewValue }) {
@@ -18,7 +18,7 @@ function AddForm({ value = "", addForm, setNewValue }) {
         name: values.task,
         isDone: false
       };
-      dispatch(addItem(newObj));
+      dispatch(addItemThunk(newObj));
       resetForm(); 
    }else if(setNewValue){
         setNewValue(values.task);
