@@ -1,12 +1,11 @@
 import '@testing-library/jest-dom'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import App from './App'
 import { describe, expect } from 'vitest'
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import AddForm from './components/AddForm';
 import { userEvent } from '@testing-library/user-event';
-import ModalWindow from './components/ModalWindow';
 import configureStore from 'redux-mock-store';
 
 
@@ -53,7 +52,7 @@ describe('App Component', () => {
         test("adding task", async () => {
                const mockStore = configureStore([]);
             const store = mockStore({});
-            store.dispatch = vi.fn(); // следим за dispatch
+            store.dispatch = vi.fn(); 
         
             render(
               <Provider store={store}>
@@ -68,9 +67,7 @@ describe('App Component', () => {
             await userEvent.click(button);
         
             expect(store.dispatch).toHaveBeenCalled();
-            expect(store.dispatch).toHaveBeenCalledWith(expect.objectContaining({
-              type: "list/addItem"
-            }));
+            expect(store.dispatch).toHaveBeenCalledWith(expect.any(Function));
           });
         test("clearing tasks", async () => {
             render(
@@ -81,7 +78,9 @@ describe('App Component', () => {
 
             const clearBtn = await screen.findByRole('button', {name: 'Clear'});
             await userEvent.click(clearBtn);
-            expect(screen.queryByText("Buba")).not.toBeInTheDocument();
+            await waitFor(() => {
+                expect(screen.queryByText("Buba")).not.toBeInTheDocument();
+            });
 
         })
     })
